@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:fragment="head">
+    <!-- <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">  -->
+
+    <!-- <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" th:href="@{/css/custom.css}"> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Molla - Bootstrap eCommerce Template</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/shop/assets/images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/shop/assets/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/shop/assets/images/icons/favicon-16x16.png">
+    <link rel="manifest" href="/shop/assets/images/icons/site.html">
+    <link rel="mask-icon" href="/shop/assets/images/icons/safari-pinned-tab.svg" color="#666666">
+    <link rel="shortcut icon" href="/shop/assets/images/icons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Molla">
+    <meta name="application-name" content="Molla">
+    <meta name="msapplication-TileColor" content="#cc9966">
+    <meta name="msapplication-config" content="/shop/assets/images/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="/shop/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/shop/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/shop/assets/css/plugins/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="/shop/assets/css/plugins/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="/shop/assets/css/plugins/jquery.countdown.css">
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/shop/assets/css/style.css">
+    <link rel="stylesheet" href="/shop/assets/css/skins/skin-demo-3.css">
+    <link rel="stylesheet" href="/shop/assets/css/demos/demo-3.css">
+</head>
+
+<body>
+    <!-- Start Main Top -->
+    <div class="header-top" th:fragment="header-top">
+        <div class="container">
+            <div class="header-left">
+                <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
+            </div><!-- End .header-left -->
+
+            <div class="header-right">
+
+                <ul class="top-menu">
+                    <li>
+                        <a href="#">Links</a>
+                        <ul>
+                            <li>
+                                <div class="header-dropdown">
+                                    <a href="#">USD</a>
+                                    <div class="header-menu">
+                                        <ul>
+                                            <li><a href="#">Eur</a></li>
+                                            <li><a href="#">Usd</a></li>
+                                        </ul>
+                                    </div><!-- End .header-menu -->
+                                </div>
+                            </li>
+                            <li>
+                                <div class="header-dropdown">
+                                    <a href="#">English</a>
+                                    <div class="header-menu">
+                                        <ul>
+                                            <li><a href="#">English</a></li>
+                                            <li><a href="#">French</a></li>
+                                            <li><a href="#">Spanish</a></li>
+                                        </ul>
+                                    </div><!-- End .header-menu -->
+                                </div>
+                            </li>
+
+<!--                            <li><a href="#signin-modal" data-toggle="modal">Sign in / Sign up</a></li>-->
+<!--                            <li th:text="${session.username}"></li>-->
+
+                                <li th:if="${session.username == null}">
+                                    <a href="login.html" data-toggle="modal">Sign in / Sign up</a>
+                                </li>
+                            <li th:if="${session.username != null}" th:text=" 'Hello '+ ${session.username}">
+                                <!-- This will display the username if it's not null -->
+                            </li>
+                                <li th:if="${session.username != null}">
+                                    <a th:href="@{/logout}">Logout</a>
+                                </li>
+
+                        </ul>
+                    </li>
+                </ul><!-- End .top-menu -->
+            </div><!-- End .header-right -->
+
+        </div><!-- End .container -->
+    </div>
+    <!-- End Main Top -->
+    <!-- Start Main Top -->
+    <div class="header-middle" th:fragment="header-middle">
+        <div class="container">
+            <div class="header-left">
+                <button class="mobile-menu-toggler">
+                    <span class="sr-only">Toggle mobile menu</span>
+                    <i class="icon-bars"></i>
+                </button>
+
+                <a href="/shop" class="logo">
+                    <img th:src="@{/assets/images/demos/demo-3/logo.png}" alt="Molla Logo" width="105" height="25">
+                </a>
+            </div><!-- End .header-left -->
+
+            <div class="header-center">
+                <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                    <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                    <form th:action="@{/product-search/0}" method="get">
+                        <div class="header-search-wrapper search-wrapper-wide">
+                            <label for="q" class="sr-only">Search</label>
+                            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                            <input type="search" class="form-control" name="keyword" id="q" placeholder="Search product ..."
+                                required>
+                        </div><!-- End .header-search-wrapper -->
+                    </form>
+                </div><!-- End .header-search -->
+            </div>
+
+            <div class="header-right">
+                <div class="dropdown compare-dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" data-display="static" title="Compare Products"
+                        aria-label="Compare Products">
+                        <div class="icon">
+                            <i class="icon-random"></i>
+                        </div>
+                        <p>Compare</p>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <ul class="compare-products">
+                            <li class="compare-product">
+                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                <h4 class="compare-product-title"><a href="#">Blue Night Dress</a>
+                                </h4>
+                            </li>
+                            <li class="compare-product">
+                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                <h4 class="compare-product-title"><a href="#">White Long Skirt</a>
+                                </h4>
+                            </li>
+                        </ul>
+
+                        <div class="compare-actions">
+                            <a href="#" class="action-link">Clear All</a>
+                            <a href="#" class="btn btn-outline-primary-2"><span>Compare</span><i
+                                    class="icon-long-arrow-right"></i></a>
+                        </div>
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .compare-dropdown -->
+
+                <div class="dropdown cart-dropdown">
+                    <a href="/shop/cart" role="button" class="dropdown-toggle cart-icon">
+                        <div class="icon">
+                            <i class="icon-shopping-cart"></i>
+                        </div>
+                        <p>Cart</p>
+                    </a>
+                </div><!-- End .cart-dropdown -->
+            </div><!-- End .header-right -->
+        </div><!-- End .container -->
+    </div>
+    </div>
+    <!--Navigation Product page-->
+    <div class="header-bottom sticky-header" th:fragment="header-bottom">
+        <div class="container">
+            <div class="header-left">
+                <div class="dropdown category-dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" data-display="static" title="Browse Categories">
+                        Browse Categories <i class="icon-angle-down"></i>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <nav class="side-nav">
+                            <ul class="menu-vertical sf-arrows">
+                                <li class="item-lead"><a href="#">Daily offers</a></li>
+                                <li class="item-lead"><a href="#">Gift Ideas</a></li>
+                                <li><a href="#">Earphones</a></li>
+                                <li><a href="#">Laptop</a></li>
+                                <li><a href="#">Camera</a></li>
+                                <li><a href="#">Smart watch</a></li>
+                                <li><a href="#">Speaker</a></li>
+                                <li><a href="#">Ipad </a></li>
+                            </ul><!-- End .menu-vertical -->
+                        </nav><!-- End .side-nav -->
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .category-dropdown -->
+            </div><!-- End .header-left -->
+
+            <div class="header-center">
+                <nav class="main-nav">
+                    <ul class="menu sf-arrows">
+                        <li class="megamenu-container active">
+                            <a href="/shop" class="sf-with-ul">Home</a>
+                        </li>
+                        <li>
+                            <a href="/shop/products/0" class="sf-with-ul">Category</a>
+                        </li>
+                    </ul><!-- End .menu -->
+                </nav><!-- End .main-nav -->
+            </div><!-- End .header-center -->
+
+            <div class="header-right">
+                <i class="la la-lightbulb-o"></i>
+                <p>Clearance<span class="highlight">&nbsp;Up to 30% Off</span></p>
+            </div>
+        </div><!-- End .container -->
+    </div>
+    </div>
+
+
+    <footer th:fragment="footer">
+        <div class="footer-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="widget widget-about">
+                            <img th:src="@{/assets/images/demos/demo-3/logo-footer.png}" class="footer-logo" alt="Footer Logo"
+                                width="105" height="25">
+                            <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate
+                                magna eros eu erat. </p>
+
+                            <div class="widget-call">
+                                <i class="icon-phone"></i>
+                                Got Question? Call us 24/7
+                                <a href="tel:#">+0123 456 789</a>
+                            </div><!-- End .widget-call -->
+                        </div><!-- End .widget about-widget -->
+                    </div><!-- End .col-sm-6 col-lg-3 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="widget">
+                            <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+
+                            <ul class="widget-list">
+                                <li><a href="about.html">About Molla</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">How to shop on Molla</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="contact.html">Contact us</a></li>
+                            </ul><!-- End .widget-list -->
+                        </div><!-- End .widget -->
+                    </div><!-- End .col-sm-6 col-lg-3 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="widget">
+                            <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+
+                            <ul class="widget-list">
+                                <li><a href="#">Payment Methods</a></li>
+                                <li><a href="#">Money-back guarantee!</a></li>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">Terms and conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                            </ul><!-- End .widget-list -->
+                        </div><!-- End .widget -->
+                    </div><!-- End .col-sm-6 col-lg-3 -->
+
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="widget">
+                            <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+
+                            <ul class="widget-list">
+                                <li><a href="#">Sign In</a></li>
+                                <li><a href="cart.html">View Cart</a></li>
+                                <li><a href="#">My Wishlist</a></li>
+                                <li><a href="#">Track My Order</a></li>
+                                <li><a href="#">Help</a></li>
+                            </ul><!-- End .widget-list -->
+                        </div><!-- End .widget -->
+                    </div><!-- End .col-sm-6 col-lg-3 -->
+                </div><!-- End .row -->
+            </div><!-- End .container -->
+        </div><!-- End .footer-middle -->
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p>
+                <!-- End .footer-copyright -->
+                <figure class="footer-payments">
+                    <img th:src="@{/assets/images/payments.png}" alt="Payment methods" width="272" height="20">
+                </figure><!-- End .footer-payments -->
+            </div><!-- End .container -->
+        </div><!-- End .footer-bottom -->
+    </footer>
+
+    <!-- ALL JS FILES -->
+    <div th:fragment="script">
+        <script src="/shop/assets/js/jquery.min.js"></script>
+        <script src="/shop/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/shop/assets/js/jquery.hoverIntent.min.js"></script>
+        <script src="/shop/assets/js/jquery.waypoints.min.js"></script>
+        <script src="/shop/assets/js/superfish.min.js"></script>
+        <script src="/shop/assets/js/owl.carousel.min.js"></script>
+        <script src="/shop/assets/js/bootstrap-input-spinner.js"></script>
+        <script src="/shop/assets/js/jquery.plugin.min.js"></script>
+        <script src="/shop/assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="/shop/assets/js/jquery.countdown.min.js"></script>
+        <!-- Main JS File -->
+        <script src="/shop/assets/js/main.js"></script>
+        <script src="/shop/assets/js/demos/demo-3.js"></script>
+
+    </div>
+</body>
+
+</html>

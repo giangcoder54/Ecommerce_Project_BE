@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+  <!-- Basic -->
+  <head th:replace="fragments::head"> </head>
+  <!-- End Top Search -->
+
+  <body>
+    <header class="header header-intro-clearance header-3">
+      <div th:replace="fragments::header-top"></div>
+      <div th:replace="fragments::header-middle"></div>
+    </header>
+    <main class="main">
+      <section id="register-form">
+        <div class="container mt-4 mb-4">
+          <div class="form">
+            <h2>Register</h2>
+            <div th:if="${error}" class="text-center alert alert-danger">
+              <p th:text="${error}"></p>
+            </div>
+            <div th:if="${username}" class="text-center alert-warning">
+              <p th:text="${username}"></p>
+            </div>
+            <div th:if="${password}" class="text-center alert-warning">
+              <p th:text="${password}"></p>
+            </div>
+            <div th:if="${success}" class="text-center alert-success">
+              <p th:text="${success}"></p>
+            </div>
+            <form
+              th:action="@{/do-register}"
+              method="post"
+              th:object="${customerDto}"
+            >
+              <div class="form-group">
+                <input
+                  type="text"
+                  th:field="*{firstName}"
+                  class="form-control"
+                  placeholder="First Name"
+                  name=""
+                />
+              </div>
+              <div
+                class="alert alert-danger"
+                th:if="${#fields.hasErrors('firstName')}"
+                th:errors="*{firstName}"
+              ></div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  th:field="*{lastName}"
+                  placeholder="Last Name"
+                  name=""
+                />
+              </div>
+              <div
+                class="alert alert-danger"
+                th:if="${#fields.hasErrors('lastName')}"
+                th:errors="*{lastName}"
+              ></div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  th:field="*{username}"
+                  class="form-control"
+                  placeholder="Email"
+                  name=""
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  th:field="*{password}"
+                  placeholder="Password"
+                  name=""
+                />
+              </div>
+              <div
+                class="alert alert-danger"
+                th:if="${#fields.hasErrors('password')}"
+                th:errors="*{password}"
+              ></div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  th:field="*{repeatPassword}"
+                  class="form-control"
+                  placeholder="Verify password"
+                  name=""
+                />
+              </div>
+              <div class="form-group">
+                <p>
+                  Do You Already Have An Account ?
+                  <a th:href="@{/login}"> Sign in now </a>
+                </p>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-outline-primary-2">
+                    <span>SIGN UP</span>
+                    <i class="icon-long-arrow-right"></i>
+                  </button>
+              </div>
+            </form>
+          </div>
+          <div class="form-choice">
+            <p class="text-center">or sign in with</p>
+            <div class="row">
+              <div class="col-sm-6">
+                <a href="#" class="btn btn-login btn-g">
+                  <i class="icon-google"></i>
+                  Login With Google
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a href="#" class="btn btn-login btn-f">
+                  <i class="icon-facebook-f"></i>
+                  Login With Facebook
+                </a>
+              </div>
+            </div>
+            </div>
+        </div>
+      </section>
+      
+      </div>
+    </main>
+  </body>
+
+  <footer th:replace="fragments::footer"></footer>
+
+  <script th:replace="fragments::script"></script>
+</html>
