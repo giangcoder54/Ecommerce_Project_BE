@@ -32,21 +32,15 @@ public class Customer {
     private String address;
 
     private String password;
-    @Lob
-    @Column(name = "image", columnDefinition = "MEDIUMBLOB")
+
     private String image;
 
     @Column(name = "city")
     private String city;
 
-    @OneToOne(mappedBy = "customer")
-    private ShoppingCart shoppingCart;
-    @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable( name = "customers_roles",
-            joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
-    private Collection<Role> roles;
+    private int shoppingCartId;
+
+
+
 }

@@ -24,12 +24,9 @@ public class Order {
     private double shippingFee;
     private String orderStatus;
     private String notes;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-    private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
-    private List<OrderDetail> orderDetailList;
+    private int customerID;
+
 
     public void setStatus(String status) {
         this.orderStatus = status;
